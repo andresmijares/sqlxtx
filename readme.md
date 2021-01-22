@@ -104,7 +104,7 @@ I've mocked only the most commons methods I use, for a more detailed list, pleas
 ## Motivation
 Transactions should be implementation details, it should not force developers to re-write code to support between `Tx` and `DB`. I couldn't find a solid way to `decorate` operations in my services, so I created this one.
 
-I lot of motivation were found in this articles.
+I found a lot of motivation in this articles.
 
  * [sqlx](https://github.com/jmoiron/sqlx)
  * [detect-and-commit-rollback](https://stackoverflow.com/questions/16184238/database-sql-tx-detecting-commit-or-rollback/23502629#23502629)
