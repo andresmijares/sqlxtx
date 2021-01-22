@@ -40,10 +40,10 @@ func (u *User) Create(username, password string) error {
 			"first_name": "Jhon",
 			"last_name":  "Doe",
 		})
-	if err != nil {
-		return err
-	}
-	return nil
+    if err != nil {
+	return err
+    }
+    return nil
 }
 
 type Events struct {}
@@ -53,9 +53,9 @@ func (u *Events) Create(name string) error {
 		map[string]interface{}{
 			"name": name,
 		})
-	if err != nil {
-		return err
-	}
+    if err != nil {
+	return err
+    }
     return nil
 }
 
@@ -66,32 +66,32 @@ EventsDao := &Events{}
 
 func CreateUser () {
     if err := UserDao.Create(); err != nil {
-		return err
-	}
+	return err
+    }
 
-	if err := EventsDao.Create("userCreated"); err != nil {
-		return err
-	}
+    if err := EventsDao.Create("userCreated"); err != nil {
+	return err
+    }
 
-	return nil
+    return nil
 }
 
 // Will run a transaction, not need to modify the underline implementation
 func CreateUserWithTx () {
     if err := db.WithTx.Exec(func() error {
-		if err := UserDao.Create(); err != nil {
-			return err
-		}
+	if err := UserDao.Create(); err != nil {
+	     return err
+	}
 
-		if err := EventsDao.Create("userCreated"); err != nil {
-			return err
-		}
+	if err := EventsDao.Create("userCreated"); err != nil {
+	     return err
+	}
 
 		return nil
-	}); err != nil {
-		return err
-	}
-	return nil
+    }); err != nil {
+	return err
+    }
+    return nil
 }
 ```
 
