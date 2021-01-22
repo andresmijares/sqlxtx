@@ -1,0 +1,22 @@
+version: 2.1
+
+jobs:
+  test:
+    working_directory: ~/test
+    docker:
+      - image: circleci/golang:1.15.5
+    steps:
+      - checkout
+      - run:
+          name: run test
+          command: |
+            GO111MODULE=off go get github.com/mattn/goveralls
+            go test ./... -v -cover -race -coverprofile=coverage.out
+            $GOPATH/bin/goveralls -coverprofile=/home/circleci/test/coverage.out -service=circle-ci -repotoken=$COVERALLS_TOKEN
+
+
+workflows:
+  version: 2.1
+  build_and_test:
+    jobs:
+      - test
