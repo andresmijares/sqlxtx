@@ -32,7 +32,9 @@ func init() {
 	}
 }
 // domain.go
-type User struct {}
+type User struct {
+	Client *sqlx.DB
+}
 
 func (u *User) Create(username, password string) error {
     _, err := u.Client.NamedExec("INSERT INTO users (first_name, last_name) VALUES (:first_name, :last_name);",
@@ -46,7 +48,9 @@ func (u *User) Create(username, password string) error {
 	return nil
 }
 
-type Events struct {}
+type Events struct {
+	Client *sqlx.DB
+}
 
 func (u *Events) Create(name string) error {
     _, err := e.Client.NamedExec(`INSERT INTO events(name) VALUE (:name);`,
@@ -60,9 +64,12 @@ func (u *Events) Create(name string) error {
 }
 
 // service.go
-
-UserDao := &User{}
-EventsDao := &Events{}
+UserDao := &User{
+	Client: Client,
+}
+EventsDao := &Events{
+	Client: Client,
+}
 
 func CreateUser () {
     if err := UserDao.Create(); err != nil {
