@@ -77,8 +77,10 @@ func CreateUserWithTx () {
 ## Test
 Sample how to test this can be found in the [sample folder](./sample/sample.**go**).
 
-## Motivation
+## Limitations
+I've mocked only the most commons methods I use, for a more detailed list, please check [sqltxmocks](./sqlxtxmocks.go)
 
+## Motivation
 Transactions should be implementation details, it should not force developers to re-write code to support between `Tx` and `DB`. I couldn't find a solid way to `decorate` operations in my services, so I created this one.
 
 I lot of motivation were found in this articles.
