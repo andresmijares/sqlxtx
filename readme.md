@@ -1,4 +1,4 @@
-****# Sqlxtx
+# Sqlxtx
 
 Changes behavior between `sqlx.DB` and `sqlx.Tx` in runtime.
 
