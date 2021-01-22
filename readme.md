@@ -1,4 +1,4 @@
-# Sqlxtx [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# Sqlxtx [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![CircleCI](https://circleci.com/gh/andresmijares/sqlxtx.svg?style=svg)](https://circleci.com/gh/andresmijares/sqlxtx) [![Coverage Status](https://coveralls.io/repos/github/andresmijares/sqlxtx/badge.svg?branch=main)](https://coveralls.io/github/andresmijares/sqlxtx?branch=main)
 
 Changes behavior between `sqlx.DB` and `sqlx.Tx` in runtime.
 
