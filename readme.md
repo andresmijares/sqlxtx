@@ -1,4 +1,4 @@
-# Sqlxtx
+# Sqlxtx [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Changes behavior between `sqlx.DB` and `sqlx.Tx` in runtime.
 

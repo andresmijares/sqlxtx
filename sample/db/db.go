@@ -19,9 +19,7 @@ var (
 	schema   = os.Getenv("schema")
 
 	// CI
-	githubCI     = "CI"
 	circleCITest = "CIRCLE_STAGE"
-	githubCiVal  = "true"
 	test         = "test"
 )
 
@@ -46,7 +44,7 @@ func init() {
 	}
 
 	if err = Client.Ping(); err != nil {
-		if os.Getenv(githubCI) == githubCiVal || os.Getenv(circleCITest) == test {
+		if os.Getenv(circleCITest) != test {
 			// if we are testing, ignore this error
 			panic(err)
 		}
