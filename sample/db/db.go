@@ -18,9 +18,11 @@ var (
 	host     = os.Getenv("host")
 	schema   = os.Getenv("schema")
 
-	// GH actions
-	githubCI    = "CI"
-	githubCiVal = "true"
+	// CI
+	githubCI     = "CI"
+	circleCITest = "CIRCLE_STAGE"
+	githubCiVal  = "true"
+	test         = "test"
 )
 
 func init() {
@@ -44,7 +46,7 @@ func init() {
 	}
 
 	if err = Client.Ping(); err != nil {
-		if os.Getenv(githubCI) == githubCiVal {
+		if os.Getenv(githubCI) == githubCiVal || os.Getenv(circleCITest) == test {
 			// if we are testing, ignore this error
 			panic(err)
 		}
