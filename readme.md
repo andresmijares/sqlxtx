@@ -9,6 +9,28 @@ go get -u github.com/andresmijares/sqlxtx
 
 ## Usage
 ```golang
+// db.go
+// Will manage each operation independently 
+func init() {
+    datasourceName := fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8",
+		username,
+		password,
+		host,
+		schema)
+	var err error
+
+	Client, err = sqlx.Open("mysql", datasourceName)
+	if err != nil {
+		panic(err)
+	}
+
+	WithTx = &sqlxtx.EnableSqlxTx{
+		Client: Client,
+		Config: sqlxtx.Config{
+			Verbose: true,
+		},
+	}
+}
 // domain.go
 type User struct {}
 
@@ -38,10 +60,9 @@ func (u *Events) Create(name string) error {
 }
 
 // service.go
-// Will manage each operation independently 
-func init() {
-    
-}
+
+UserDao := &User{}
+EventsDao := &Events{}
 
 func CreateUser () {
     if err := UserDao.Create(); err != nil {
