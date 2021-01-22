@@ -103,7 +103,7 @@ func CreateUserWithTx () {
 ```
 
 ## Test
-Sample how to test this can be found in the [sample folder](./sample/sample.**go**).
+Sample how to test this can be found in the [sample folder](./sample/sample.go).
 
 ## Limitations
 I've mocked only the most commons methods I use, for a more detailed list, please check [sqltxmocks](./sqlxtxmocks.go)
