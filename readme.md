@@ -42,10 +42,10 @@ func (u *User) Create(username, password string) error {
 			"first_name": "Jhon",
 			"last_name":  "Doe",
 		})
-	if err != nil {
-		return err
-	}
-	return nil
+    if err != nil {
+	return err
+    }
+    return nil
 }
 
 type Events struct {
@@ -57,9 +57,9 @@ func (u *Events) Create(name string) error {
 		map[string]interface{}{
 			"name": name,
 		})
-	if err != nil {
-		return err
-	}
+    if err != nil {
+	return err
+    }
     return nil
 }
 
@@ -73,32 +73,32 @@ EventsDao := &Events{
 
 func CreateUser () {
     if err := UserDao.Create(); err != nil {
-		return err
-	}
+	return err
+    }
 
-	if err := EventsDao.Create("userCreated"); err != nil {
-		return err
-	}
+    if err := EventsDao.Create("userCreated"); err != nil {
+	return err
+    }
 
-	return nil
+    return nil
 }
 
 // Will run a transaction, not need to modify the underline implementation
 func CreateUserWithTx () {
     if err := db.WithTx.Exec(func() error {
-		if err := UserDao.Create(); err != nil {
-			return err
-		}
-
-		if err := EventsDao.Create("userCreated"); err != nil {
-			return err
-		}
-
-		return nil
-	}); err != nil {
-		return err
+	if err := UserDao.Create(); err != nil {
+	     return err
 	}
+
+	if err := EventsDao.Create("userCreated"); err != nil {
+	     return err
+	}
+
 	return nil
+    }); err != nil {
+	return err
+    }
+    return nil
 }
 ```
 
@@ -111,7 +111,7 @@ I've mocked only the most commons methods I use, for a more detailed list, pleas
 ## Motivation
 Transactions should be implementation details, it should not force developers to re-write code to support between `Tx` and `DB`. I couldn't find a solid way to `decorate` operations in my services, so I created this one.
 
-I lot of motivation were found in this articles.
+I found a lot of motivation in this articles.
 
  * [sqlx](https://github.com/jmoiron/sqlx)
  * [detect-and-commit-rollback](https://stackoverflow.com/questions/16184238/database-sql-tx-detecting-commit-or-rollback/23502629#23502629)
