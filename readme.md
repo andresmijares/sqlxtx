@@ -87,7 +87,7 @@ func CreateUserWithTx () {
 	     return err
 	}
 
-		return nil
+	return nil
     }); err != nil {
 	return err
     }
