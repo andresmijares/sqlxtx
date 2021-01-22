@@ -43,7 +43,7 @@ func (u *User) Create(username, password string) error {
 			"last_name":  "Doe",
 		})
     if err != nil {
-	return err
+		return err
     }
     return nil
 }
@@ -58,7 +58,7 @@ func (u *Events) Create(name string) error {
 			"name": name,
 		})
     if err != nil {
-	return err
+		return err
     }
     return nil
 }
@@ -73,11 +73,11 @@ EventsDao := &Events{
 
 func CreateUser () {
     if err := UserDao.Create(); err != nil {
-	return err
+		return err
     }
 
     if err := EventsDao.Create("userCreated"); err != nil {
-	return err
+		return err
     }
 
     return nil
@@ -87,16 +87,16 @@ func CreateUser () {
 func CreateUserWithTx () {
     if err := db.WithTx.Exec(func() error {
 	if err := UserDao.Create(); err != nil {
-	     return err
+	    return err
 	}
 
 	if err := EventsDao.Create("userCreated"); err != nil {
-	     return err
+	    return err
 	}
 
-	return nil
+		return nil
     }); err != nil {
-	return err
+		return err
     }
     return nil
 }
