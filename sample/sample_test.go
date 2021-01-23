@@ -9,9 +9,6 @@ import (
 )
 
 var (
-	UserDaoMock  UserRepoInterface
-	EventDaoMock EventRepoInterface
-
 	getUserMock  func() error
 	getEventMock func() error
 	getExecMock  func(func() error) error
